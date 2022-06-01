@@ -1,7 +1,25 @@
 {% extends 'core/main.html' %}
+{% load static %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'styles/homepage.css' %}">
+{% endblock style %}
 
 {% block content %}
-<h2>Homepage</h2>
+
+<section class="form-container">
+    <div class="logo">
+        <img src="{% static 'images/chat-icon.png' %}" alt="" class="icon header-elem">
+    </div>
+    <div class="header">
+        <h4 class="heading header-elem">Video Chat</h4>
+        <p>A place to chat with your friends</p>
+    </div>
+    <div class="form">
+        <input type="text" class="room-name form-elem" placeholder="Room Name">
+        <input type="text" class="user-name form-elem" placeholder="User Name">
+        <button class="submit form-elem">Submit</button>
+    </div>
+</section>
 
 {% endblock content %}
-
