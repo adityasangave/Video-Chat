@@ -15,11 +15,32 @@
         <h4 class="heading header-elem">Video Chat</h4>
         <p>A place to chat with your friends</p>
     </div>
-    <div class="form">
-        <input type="text" class="room-name form-elem" placeholder="Room Name">
-        <input type="text" class="user-name form-elem" placeholder="User Name">
-        <button class="submit form-elem">Submit</button>
-    </div>
+    <form class="form" id="form">
+        <input type="text" class="room-name form-elem" name="room" placeholder="Room Name">
+        <input type="text" class="user-name form-elem" name="user" placeholder="User Name">
+        <button class="submit form-elem" type="submit">Submit</button>
+    </form>
 </section>
+
+<script>
+    let form = document.getElementById("form")
+    async function joinRoom(e) {
+        e.preventDefault();
+        let Room = e.target.room.value.toUpperCase()
+
+        let response = await fetch(`/gettoken/?channel=${Room}`);
+        let data = await response.json()
+
+        let UID = data["uid"];
+        let token = data["token"];
+
+        sessionStorage.setItem('UID', UID)
+        sessionStorage.setItem('token', token)
+        sessionStorage.setItem('room', Room)
+
+        window.open('/room', '_self')
+    }
+    form.addEventListener('submit', joinRoom)
+</script>
 
 {% endblock content %}
