@@ -9,7 +9,7 @@ def generateToken(request):
     appCertificate = "5023805a4aaa4b8d88dc55a7e1f9c750"  
     channelName = request.GET.get("channel")
     uid = 0
-    role =1
+    role = 1
     privilegeExpiredTs = 3600 * 24 + time.time()
     
     token = RtcTokenBuilder.buildTokenWithUid(appID, appCertificate, channelName, uid, role, privilegeExpiredTs)
