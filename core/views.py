@@ -5,8 +5,10 @@ from django.http import JsonResponse
 from agora_token_builder import RtcTokenBuilder
 
 def generateToken(request):
-    appID = "fba883be51524f7ca7dc32812b446325"
+    appID = "fba883be51524f7ca7dc32812b446325" 
     appCertificate = "5023805a4aaa4b8d88dc55a7e1f9c750"  
+    # appID = "349e1c588fdb4292b77c5af2975da731"
+    # appCertificate = "231c4478541044d9a653b42b4eb57172"  
     channelName = request.GET.get("channel")
     uid = 0
     role = 1
